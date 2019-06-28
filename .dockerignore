@@ -1,0 +1,9 @@
+.vagrant
+vendor
+composer.lock
+bin/dbunit
+bin/phpunit
+
+tests
+demos
+documentation
