@@ -676,17 +676,6 @@ class Zend_Controller_Request_HttpTest extends PHPUnit_Framework_TestCase
         );
     }
 
-    public function testGetHeaderThrowsExceptionWithNoInput()
-    {
-        try {
-            // Suppressing warning
-            $header = @$this->_request->getHeader();
-            $this->fail('getHeader() should fail with no arguments)');
-        } catch (Exception $e) {
-            // success
-        }
-    }
-
     public function testIsXmlHttpRequest()
     {
         $this->assertFalse($this->_request->isXmlHttpRequest());
