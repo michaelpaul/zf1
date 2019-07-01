@@ -36,8 +36,7 @@
     },
     "scripts": {
         "patch-phpunit": [
-            "cd vendor/phpunit/phpunit && git checkout -- .",
-            "git apply --directory=vendor/phpunit/phpunit phpunit-3.7.38-php73.diff"
+            "git apply --directory=vendor/phpunit/phpunit phpunit-3.7.38-php73.diff > /dev/null 2>&1 || true"
         ],
         "post-update-cmd": [
             "@patch-phpunit"
