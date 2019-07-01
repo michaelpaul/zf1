@@ -17,10 +17,10 @@ before_script:
   
   - mysql -e 'create database zftest;'
 
-  - if [[ "$TRAVIS_PHP_VERSION" != "5.2" ]] && [[ "$TRAVIS_PHP_VERSION" != "7" ]]; then phpenv config-add tests/config.ini; fi
-  - if [[ "$TRAVIS_PHP_VERSION" == "7" ]]; then phpenv config-add tests/php7_config.ini; fi
+  - phpenv config-add tests/php7_config.ini;
 
   - cp ./tests/TestConfiguration.travis.php ./tests/TestConfiguration.php
+  - php -i
 script:
  - cd tests/
  - php runalltests.php
