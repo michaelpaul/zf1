@@ -9,7 +9,7 @@ install:
 services:
   - memcached
 addons:
-  mariadb: '10.0'
+  mariadb: '10.3'
 before_script:
   - phpenv config-rm xdebug.ini || return 0
   - travis_retry composer self-update
