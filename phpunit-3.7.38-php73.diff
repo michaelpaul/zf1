@@ -1,0 +1,48 @@
+diff --git a/PHPUnit/Framework/Comparator/DOMDocument.php b/PHPUnit/Framework/Comparator/DOMDocument.php
+index 562b8fbcc2..8ffb21cf54 100644
+--- a/PHPUnit/Framework/Comparator/DOMDocument.php
++++ b/PHPUnit/Framework/Comparator/DOMDocument.php
+@@ -83,7 +83,7 @@ public function accepts($expected, $actual)
+      *                           fails. Contains information about the
+      *                           specific errors that lead to the failure.
+      */
+-    public function assertEquals($expected, $actual, $delta = 0, $canonicalize = FALSE, $ignoreCase = FALSE)
++    public function assertEquals($expected, $actual, $delta = 0, $canonicalize = FALSE, $ignoreCase = FALSE, array &$processed = array())
+     {
+         if ($expected->C14N() !== $actual->C14N()) {
+             throw new PHPUnit_Framework_ComparisonFailure(
+diff --git a/PHPUnit/TextUI/Command.php b/PHPUnit/TextUI/Command.php
+index 6cf8670147..e050809e05 100644
+--- a/PHPUnit/TextUI/Command.php
++++ b/PHPUnit/TextUI/Command.php
+@@ -274,7 +274,7 @@ protected function handleArguments(array $argv)
+                           'tokenizer', 'No code coverage will be generated.'
+                         );
+ 
+-                        continue;
++                        continue 2;
+                     }
+ 
+                     if (!extension_loaded('xdebug')) {
+@@ -282,7 +282,7 @@ protected function handleArguments(array $argv)
+                           'Xdebug', 'No code coverage will be generated.'
+                         );
+ 
+-                        continue;
++                        continue 2;
+                     }
+ 
+                     switch ($option[0]) {
+diff --git a/composer.json b/composer.json
+index c6077c8c2c..6317948774 100644
+--- a/composer.json
++++ b/composer.json
+@@ -41,7 +41,7 @@
+     "repositories": [
+         {
+             "type": "pear",
+-            "url": "http://pear.php.net"
++            "url": "https://pear.php.net"
+         }
+     ],
+     "suggest": {
