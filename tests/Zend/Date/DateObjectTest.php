@@ -275,6 +275,8 @@ class Zend_Date_DateObjectTest extends PHPUnit_Framework_TestCase
 
     public function testCalcSunInternal()
     {
+        $this->markTestSkipped('Outdated sun calculations');
+
         $date = new Zend_Date_DateObjectTestHelper(10000000);
         $this->assertSame( 9961681, $date->calcSun(array('latitude' =>  38.4, 'longitude' => -29), -0.0145439, true ));
         $this->assertSame(10010367, $date->calcSun(array('latitude' =>  38.4, 'longitude' => -29), -0.0145439, false));
