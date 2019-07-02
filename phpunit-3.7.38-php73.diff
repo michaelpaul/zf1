@@ -34,33 +34,39 @@ index 6cf867014..e050809e0 100644
  
                      switch ($option[0]) {
 diff --git a/PHPUnit/Util/Getopt.php b/PHPUnit/Util/Getopt.php
-index 41ec26c02..f8d7bb776 100644
+index 41ec26c02..cc0e359fc 100644
 --- a/PHPUnit/Util/Getopt.php
 +++ b/PHPUnit/Util/Getopt.php
-@@ -77,7 +77,7 @@ public static function getopt(array $args, $short_options, $long_options = NULL)
+@@ -77,7 +77,11 @@ public static function getopt(array $args, $short_options, $long_options = NULL)
          reset($args);
          array_map('trim', $args);
  
 -        while (list($i, $arg) = each($args)) {
-+        foreach ($args as $i => $arg) {
++        while (key($args) !== null) {
++            $i  = (int) key($args);
++            $arg = current($args);
++            next($args);
++
              if ($arg == '') {
                  continue;
              }
-@@ -136,7 +136,7 @@ protected static function parseShortOption($arg, $short_options, &$opts, &$args)
+@@ -136,7 +140,8 @@ protected static function parseShortOption($arg, $short_options, &$opts, &$args)
                          break;
                      }
  
 -                    else if (list(, $opt_arg) = each($args)) {
 +                    else if ($opt_arg = current($args)) {
++                        next($args);
                      }
  
                      else {
-@@ -184,7 +184,7 @@ protected static function parseLongOption($arg, $long_options, &$opts, &$args)
+@@ -184,7 +189,8 @@ protected static function parseLongOption($arg, $long_options, &$opts, &$args)
              if (substr($long_opt, -1) == '=') {
                  if (substr($long_opt, -2) != '==') {
                      if (!strlen($opt_arg) &&
 -                        !(list(, $opt_arg) = each($args))) {
 +                        !($opt_arg = current($args))) {
++                        next($args);
                          throw new PHPUnit_Framework_Exception(
                            "option --$opt requires an argument"
                          );
