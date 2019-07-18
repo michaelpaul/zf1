@@ -1,6 +1,10 @@
+# Development using Gitpod
+
+Add some docs here.
+
 # Development using a virtual machine
 
-You can set up a development virtual machine for ZF1 unit testing and library 
+You can set up a development virtual machine for ZF1 unit testing and library
 development following these simple instructions.
 
 ### 1. Install requirements for VM. (Note: these are not required by ZF1 itself)
@@ -18,7 +22,7 @@ development following these simple instructions.
 
     vagrant up
 
-This will take a long while as it has to download a VM image and then 
+This will take a long while as it has to download a VM image and then
 provision it. Once it has finished, it will exit and leave you back at the
 command prompt.
 
@@ -31,7 +35,7 @@ command prompt.
     php-build.sh 5.3.11
 
 This also takes a while as it compiles PHP for you!
-   
+
 ### 6. Select PHP to use:
 
     pe 5.3.11
@@ -57,7 +61,7 @@ To stop the VM do one of the following:
     vagrant suspend   # if you plan on running it later
     vagrant halt      # if you wish to turn off the VM, but keep it around
     vagrant destroy   # if you wish to delete the VM completely
-    
+
 Also, when any of of the Puppet manifests change (.pp files), it is a good idea to rerun them:
 
     vagrant provision
